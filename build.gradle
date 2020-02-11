@@ -7,12 +7,13 @@ plugins {
 }
 
 group 'com.gluonhq'
-version '0.0.15-SNAPSHOT'
+version '0.0.15-ACINQ-SNAPSHOT'
 
 sourceCompatibility = 11
 targetCompatibility = 11
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         url "https://plugins.gradle.org/m2/"
@@ -28,7 +29,7 @@ repositories {
 dependencies {
     implementation gradleApi()
 
-    implementation 'com.gluonhq:omega:0.0.15-SNAPSHOT'
+    implementation 'com.gluonhq:substrate:0.0.15-ACINQ-SNAPSHOT'
 }
 
 gradlePlugin {
@@ -64,7 +65,7 @@ publishing {
                credentials {
                    username project.property('gluonNexusUsername')
                    password project.property('gluonNexusPassword')
-               }   
+               }
            }
       }
   }

@@ -36,6 +36,7 @@ import org.gradle.api.model.ObjectFactory;
 import org.gradle.util.ConfigureUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ClientExtension {
@@ -151,12 +152,21 @@ public class ClientExtension {
      */
     private boolean verbose;
 
+    /**
+     * Build static lib instead of linking binary
+     */
+    private boolean buildStaticLib;
+
+    private List<String> nativeBuildOptions;
+
     private AttachConfiguration attachConfiguration;
 
     public ClientExtension(Project project, ObjectFactory objectFactory) {
         this.graalLibsVersion = DEFAULT_GRAAL_LIBS_VERSION;
         this.javaStaticSdkVersion = DEFAULT_JAVA_STATIC_SDK_VERSION;
         this.javafxStaticSdkVersion = DEFAULT_JAVAFX_STATIC_SDK_VERSION;
+        this.nativeBuildOptions = Collections.emptyList();
+        this.buildStaticLib = false;
         this.target = DEFAULT_TARGET;
         this.backend = "";
         this.bundlesList = new ArrayList<>();
@@ -324,5 +334,21 @@ public class ClientExtension {
 
     public AttachConfiguration getAttachConfig() {
         return attachConfiguration;
+    }
+
+    public boolean isBuildStaticLib() {
+        return buildStaticLib;
+    }
+
+    public void setBuildStaticLib(boolean buildStaticLib) {
+        this.buildStaticLib = buildStaticLib;
+    }
+
+    public List<String> getNativeBuildOptions() {
+        return nativeBuildOptions;
+    }
+
+    public void setNativeBuildOptions(List<String> nativeBuildOptions) {
+        this.nativeBuildOptions = nativeBuildOptions;
     }
 }

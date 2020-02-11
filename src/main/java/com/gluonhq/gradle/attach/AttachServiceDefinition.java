@@ -31,8 +31,7 @@
  */
 package com.gluonhq.gradle.attach;
 
-import com.gluonhq.omega.attach.AttachService;
-import com.gluonhq.omega.util.Constants;
+import com.gluonhq.substrate.Constants;
 import org.gradle.api.GradleException;
 import org.gradle.api.Named;
 import org.gradle.api.logging.LogLevel;

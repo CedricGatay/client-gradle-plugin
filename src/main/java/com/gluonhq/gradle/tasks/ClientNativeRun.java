@@ -29,8 +29,8 @@
  */
 package com.gluonhq.gradle.tasks;
 
-import com.gluonhq.omega.Omega;
-import com.gluonhq.omega.util.Constants;
+import com.gluonhq.substrate.Constants;
+import com.gluonhq.substrate.SubstrateDispatcher;
 import org.gradle.api.Project;
 import org.gradle.api.tasks.TaskAction;
 
@@ -56,7 +56,7 @@ public class ClientNativeRun extends ClientNativeBase {
             Path client = project.getLayout().getBuildDirectory().dir(Constants.CLIENT_PATH).get().getAsFile().toPath();
             getProject().getLogger().debug("start running at " + client.toString());
 
-            Omega.nativeRun(client.toString(), configBuild.getClientConfig());
+            new SubstrateDispatcher(client, configBuild.getClientConfig()).nativeRun();
         } catch (Exception e) {
             e.printStackTrace();
         }
