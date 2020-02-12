@@ -51,13 +51,13 @@ public class ClientNativeLink extends ClientNativeBase {
 
         ConfigBuild configBuild = new ConfigBuild(project);
         configBuild.configClient();
-
         try {
-            File client = project.getLayout().getBuildDirectory().dir(Constants.CLIENT_PATH).get().getAsFile();
-            Path tmpPath = client.toPath().resolve(Constants.GVM_PATH).resolve(Constants.TMP_PATH);
-            getProject().getLogger().debug("start linking at " + tmpPath.toString());
+            //String buildRoot = project.getLayout().getBuildDirectory().dir(Constants.CLIENT_PATH).get().getAsFile().getAbsolutePath();
+            Path clientPath = project.getLayout().getBuildDirectory().dir(Constants.CLIENT_PATH).get().getAsFile().toPath();
+            //Path tmpPath = client.toPath().resolve(Constants.GVM_PATH).resolve(Constants.TMP_PATH);
+            getProject().getLogger().debug("start linking at " + clientPath.toString());
 
-            new SubstrateDispatcher(tmpPath, configBuild.getClientConfig()).nativeLink(configBuild.getRuntimeClassPath());
+            new SubstrateDispatcher(clientPath, configBuild.getClientConfig()).nativeLink(configBuild.getRuntimeClassPath());
         } catch (Exception e) {
             e.printStackTrace();
         }

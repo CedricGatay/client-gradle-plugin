@@ -39,11 +39,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.gluonhq.substrate.Constants.DEFAULT_JAVAFX_STATIC_SDK_VERSION;
+import static com.gluonhq.substrate.Constants.DEFAULT_JAVA_STATIC_SDK_VERSION;
+
 public class ClientExtension {
 
-    private static final String DEFAULT_GRAAL_LIBS_VERSION = "20.0.0-ea+17";
-    private static final String DEFAULT_JAVA_STATIC_SDK_VERSION = "11-ea+6";
-    private static final String DEFAULT_JAVAFX_STATIC_SDK_VERSION = "13-ea+7";
+//    private static final String DEFAULT_GRAAL_LIBS_VERSION = "20.0.0-ea+17";
+    //private static final String DEFAULT_JAVA_STATIC_SDK_VERSION = "11-ea+6";
+    //private static final String DEFAULT_JAVAFX_STATIC_SDK_VERSION = "13-ea+7";
     private static final String DEFAULT_TARGET = "host";
 
     /**
@@ -162,7 +165,6 @@ public class ClientExtension {
     private AttachConfiguration attachConfiguration;
 
     public ClientExtension(Project project, ObjectFactory objectFactory) {
-        this.graalLibsVersion = DEFAULT_GRAAL_LIBS_VERSION;
         this.javaStaticSdkVersion = DEFAULT_JAVA_STATIC_SDK_VERSION;
         this.javafxStaticSdkVersion = DEFAULT_JAVAFX_STATIC_SDK_VERSION;
         this.nativeBuildOptions = Collections.emptyList();

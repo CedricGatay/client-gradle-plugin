@@ -68,6 +68,7 @@ class ConfigBuild {
         //clientConfig.setGraalLibsVersion(clientExtension.getGraalLibsVersion());
         clientConfig.setJavaStaticSdkVersion(clientExtension.getJavaStaticSdkVersion());
         clientConfig.setJavafxStaticSdkVersion(clientExtension.getJavafxStaticSdkVersion());
+        clientConfig.setBuildStaticLib(clientExtension.isBuildStaticLib());
 
         String osname = System.getProperty("os.name", "Mac OS X").toLowerCase(Locale.ROOT);
         Triplet hostTriplet;
