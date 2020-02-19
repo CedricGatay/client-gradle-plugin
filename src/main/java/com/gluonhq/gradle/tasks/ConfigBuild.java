@@ -73,9 +73,9 @@ class ConfigBuild {
         String osname = System.getProperty("os.name", "Mac OS X").toLowerCase(Locale.ROOT);
         Triplet hostTriplet;
         if (osname.contains("mac")) {
-            hostTriplet = new Triplet(Constants.ARCH_AMD64, Constants.HOST_MAC, Constants.TARGET_MAC);
+            hostTriplet = new Triplet(Constants.ARCH_AMD64, Constants.VENDOR_APPLE, Constants.OS_DARWIN);
         } else if (osname.contains("nux")) {
-            hostTriplet = new Triplet(Constants.ARCH_AMD64, Constants.HOST_LINUX, Constants.TARGET_LINUX);
+            hostTriplet = new Triplet(Constants.ARCH_AMD64, Constants.VENDOR_LINUX, Constants.OS_LINUX);
         } else {
             throw new RuntimeException("OS " + osname + " not supported");
         }
@@ -86,16 +86,16 @@ class ConfigBuild {
         switch (target) {
             case Constants.TARGET_HOST:
                 if (osname.contains("mac")) {
-                    targetTriplet = new Triplet(Constants.ARCH_AMD64, Constants.HOST_MAC, Constants.TARGET_MAC);
+                    targetTriplet = new Triplet(Constants.ARCH_AMD64, Constants.VENDOR_APPLE, Constants.OS_DARWIN);
                 } else if (osname.contains("nux")) {
-                    targetTriplet = new Triplet(Constants.ARCH_AMD64, Constants.HOST_LINUX, Constants.TARGET_LINUX);
+                    targetTriplet = new Triplet(Constants.ARCH_AMD64, Constants.VENDOR_LINUX, Constants.OS_LINUX);
                 }
                 break;
             case Constants.TARGET_IOS:
-                targetTriplet = new Triplet(Constants.ARCH_ARM64, Constants.HOST_MAC, Constants.TARGET_IOS);
+                targetTriplet = new Triplet(Constants.ARCH_ARM64, Constants.VENDOR_APPLE, Constants.OS_IOS);
                 break;
             case Constants.TARGET_IOS_SIM:
-                targetTriplet = new Triplet(Constants.ARCH_AMD64, Constants.HOST_MAC, Constants.TARGET_IOS);
+                targetTriplet = new Triplet(Constants.ARCH_AMD64, Constants.VENDOR_APPLE, Constants.OS_IOS);
                 break;
             default:
                 throw new RuntimeException("No valid target found for " + target);
